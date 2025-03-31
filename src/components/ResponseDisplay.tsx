@@ -54,7 +54,7 @@ const ResponseDisplay = ({ response, onContinue }: ResponseDisplayProps) => {
               onClick={onContinue}
               className="w-full transition-all hover:scale-[1.01] active:scale-[0.99]"
             >
-              Continue to Next Clue
+              {response.pass}
             </Button>
           )}
         </div>

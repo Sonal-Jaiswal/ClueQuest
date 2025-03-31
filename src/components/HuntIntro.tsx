@@ -10,7 +10,7 @@ interface HuntIntroProps {
 const HuntIntro = ({ onStart }: HuntIntroProps) => {
   const [showIntro, setShowIntro] = useState(true);
   
-  const introText = "Welcome to the API Treasure Hunt - a journey through web APIs to discover hidden treasure.";
+  const introText = "  This is a API Treasure Hunt - a journey through web APIs to discover hidden treasure. ";
   const { displayedText, isComplete } = useTypingEffect(introText, 40);
   
   const handleStart = () => {
@@ -34,8 +34,8 @@ const HuntIntro = ({ onStart }: HuntIntroProps) => {
         <div className="space-y-4">
           <h2 className="text-xl font-medium">How to Play:</h2>
           <ul className="space-y-2 list-disc pl-5">
-            <li className="text-muted-foreground">Use the console to send API requests to different endpoints</li>
-            <li className="text-muted-foreground">Each response contains a clue to the next endpoint</li>
+            <li className="text-muted-foreground">Use the console to POST & GET API requests to different endpoints</li>
+            <li className="text-muted-foreground">Each response contains a clue to the next endpoint and type of request</li>
             <li className="text-muted-foreground">Follow the trail of clues until you find the treasure</li>
             <li className="text-muted-foreground">Time is ticking - how fast can you solve the puzzle?</li>
           </ul>

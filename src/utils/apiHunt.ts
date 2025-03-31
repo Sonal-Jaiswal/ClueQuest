@@ -25,7 +25,7 @@ export interface HuntProgress {
 const CLUES: Record<string, Clue> = {
   "start": {
     id: "start",
-    hint: "Welcome, treasure hunter! Your first clue awaits at the '/api/clue/first' endpoint. Make a GET request to begin.",
+    hint: "Welcome, treasure hunter! Your first clue awaits at the '/api/clue/first' endpoint. Make a request to begin.",
     endpoint: "/api/clue/first",
     method: "GET",
     nextClueId: "cipher",
@@ -33,7 +33,7 @@ const CLUES: Record<string, Clue> = {
   },
   "cipher": {
     id: "cipher",
-    hint: "You found the first clue! Now decode the cipher by sending the key 'treasure' to '/api/clue/decode'.",
+    hint: "You found the first clue! Now decode the cipher by sending an object with attribute key and value 'treasure' to '/api/clue/decode'.",
     endpoint: "/api/clue/decode",
     method: "POST",
     requestBody: { key: "treasure" },
@@ -71,27 +71,32 @@ const API_RESPONSES: Record<string, any> = {
   "/api/clue/first": {
     message: "First clue discovered!",
     clue: "The cipher awaits decoding. Use the key 'treasure' to unlock the next step.",
-    nextEndpoint: "/api/clue/decode"
+    nextEndpoint: "/api/clue/decode",
+    pass: "Good"
   },
   "/api/clue/decode": {
     message: "Cipher successfully decoded!",
     clue: "The decoded message reveals coordinates: x=42, y=18. Find this location on the map.",
-    nextEndpoint: "/api/clue/map?x=42&y=18"
+    nextEndpoint: "/api/clue/map?x=42&y=18",
+    pass: "Great"
   },
   "/api/clue/map?x=42&y=18": {
     message: "Location found on the map!",
     clue: "This location contains a locked door. You need to forge a key with the pattern: 1-3-5-7-9",
-    nextEndpoint: "/api/clue/forge"
+    nextEndpoint: "/api/clue/forge",
+    pass: "Nice"
   },
   "/api/clue/forge": {
     message: "Key successfully forged!",
     clue: "The door opens to reveal a final chamber. Claim your treasure!",
-    nextEndpoint: "/api/clue/treasure"
+    nextEndpoint: "/api/clue/treasure",
+    pass: "KeepGoing"
   },
   "/api/clue/treasure": {
     message: "Congratulations, treasure hunter!",
-    clue: "You've completed the API Treasure Hunt! Your prize is the knowledge and skills you've gained along the way.",
-    finalTime: true
+    clue: "  You've completed the API Treasure Hunt! Your prize is the knowledge and skills you've gained along the way.",
+    finalTime: true,
+    pass: "YourPasswordHasAlwaysBeenHere - Though this is not the password"
   }
 };
 
